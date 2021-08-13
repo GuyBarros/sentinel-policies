@@ -41,7 +41,7 @@ print("Number of validated AWS providers", num_validated_providers)
 print("Difference:", difference)
 
 
-validated = aws_env_vars_validated and difference is 0
+validated = difference is 0
 # Main rule
 main = rule {
   validated
