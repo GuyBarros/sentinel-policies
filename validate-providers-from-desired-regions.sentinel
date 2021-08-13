@@ -40,13 +40,6 @@ print("Number of AWS providers:", num_all_aws_providers)
 print("Number of validated AWS providers", num_validated_providers)
 print("Difference:", difference)
 
-# Prevent use of AWS_DEFAULT_REGION and AWS_PROFILE environment variables
-aws_env_vars_validated = true
-if "AWS_DEFAULT_REGION" in keys(tfrun.variables) or
-   "AWS_PROFILE" in keys(tfrun.variables) {
-  print("Workspaces are not allowed to set the AWS_DEFAULT_REGION and AWS_PROFILE environment variables.")
-  aws_env_vars_validated = false
-}
 
 validated = aws_env_vars_validated and difference is 0
 # Main rule
