@@ -23,7 +23,8 @@ import "strings"
 import "aws-functions" as aws
 
 # Allowed AWS regions
-allowed_regions = ["","us-east-1", "us-west-1","eu-west-2","sa-east-1","eu-central-1"]
+
+allowed_regions = ["","us-east-1", "us-west-1","eu-west-2","sa-east-1","eu-central-1","e-east-1","ap-northeast-1"]
 
 # Get all AWS providers
 all_aws_providers = config.find_providers_by_type("aws")
@@ -40,15 +41,8 @@ print("Number of AWS providers:", num_all_aws_providers)
 print("Number of validated AWS providers", num_validated_providers)
 print("Difference:", difference)
 
-# Prevent use of AWS_DEFAULT_REGION and AWS_PROFILE environment variables
-aws_env_vars_validated = true
-if "AWS_DEFAULT_REGION" in keys(tfrun.variables) or
-   "AWS_PROFILE" in keys(tfrun.variables) {
-  print("Workspaces are not allowed to set the AWS_DEFAULT_REGION and AWS_PROFILE environment variables.")
-  aws_env_vars_validated = false
-}
 
-validated = aws_env_vars_validated and difference is 0
+validated = difference is 0
 # Main rule
 main = rule {
   validated
