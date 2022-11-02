@@ -31,3 +31,8 @@ module "aws-functions" {
 policy "validate-providers-from-desired-regions" {
     enforcement_level = "soft-mandatory"
 }
+
+policy "require-all-resources-from-pmr" {
+    enforcement_level = "soft-mandatory"
+}
+
