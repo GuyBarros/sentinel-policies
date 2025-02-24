@@ -10,10 +10,7 @@ import "tfplan-functions" as plan
 allowed_types = ["t2.small", "t2.medium", "t2.large","m4.large","t4g.xlarge"]
 
 # Get all EC2 instances
-allEC2Instances = filter plan.resource_changes as _, rc {
-    rc.type is "aws_instance" and
-        (rc.change.actions contains "create" or rc.change.actions is ["update"])
-}
+allEC2Instances = plan.find_resources("aws_instance")
 
 # Filter to EC2 instances with violations
 # Warnings will be printed for all violations since the last parameter is true
