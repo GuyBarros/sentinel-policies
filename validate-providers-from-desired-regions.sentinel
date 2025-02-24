@@ -42,7 +42,7 @@ print("Number of validated AWS providers", num_validated_providers)
 print("Difference:", difference)
 
 
-validated = difference is 0
+validated = tfrun.is_destroy or difference is 0
 # Main rule
 main = rule {
   validated
